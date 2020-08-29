@@ -1,0 +1,39 @@
+<div class="container mt-3">
+    <div class="row">
+        
+        <div class="col-md-12">
+            <button class="btn btn-primary mb-3" routerLink="post" style="float: right;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">name</th>
+                    <th scope="col">job role</th>
+                    <th scope="col">phone number</th>
+                    <th scope="col">Work location</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody  *ngFor = "let data of data">
+                    <tr>
+                        <th (click)="detail(data.id)" class="detail">{{data.name}}</th>
+                        <th (click)="detail(data.id)" class="detail" >{{data.job_role}}</th>
+                        <th (click)="detail(data.id)" class="detail" >{{data.phone_number}}</th>
+                        <th (click)="detail(data.id)" class="detail" >{{data.work_location}}</th>
+                        <th *ngIf="data.status == 1" style="color:green" (click)="detail(data.id)" class="detail">activate</th>
+                        <th *ngIf="data.status == 0" style="color:red" (click)="detail(data.id)" class="detail">deactivate</th>
+                        <th><button class="btn btn-warning btn-sm mr-3"  routerLink="edit/{{data.id}}" style="border-radius: 10px;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteData(data.id)" style="border-radius: 10px;"><i class="fa fa-trash" aria-hidden="true"></i>
+                            </button></th>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<style scoped>
+  .detail{
+    cursor: pointer;
+  }
+</style>
